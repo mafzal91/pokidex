@@ -1,0 +1,28 @@
+{
+  "_index-xIYRZ9oo.js": {
+    "file": "assets/index-xIYRZ9oo.js",
+    "name": "index",
+    "isDynamicEntry": true,
+    "dynamicImports": [
+      "src/routes/index.tsx?tsr-split=component"
+    ]
+  },
+  "src/routes/index.tsx?tsr-split=component": {
+    "file": "assets/index-C-3dJyN4.js",
+    "name": "index",
+    "src": "src/routes/index.tsx?tsr-split=component",
+    "isDynamicEntry": true,
+    "imports": [
+      "_index-xIYRZ9oo.js"
+    ]
+  },
+  "virtual:$vinxi/handler/server": {
+    "file": "server.js",
+    "name": "server",
+    "src": "virtual:$vinxi/handler/server",
+    "isEntry": true,
+    "dynamicImports": [
+      "_index-xIYRZ9oo.js"
+    ]
+  }
+}

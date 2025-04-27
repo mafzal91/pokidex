@@ -1,0 +1,63 @@
+{
+  "/Users/mohammadafzal/Documents/development/personal/pokidex/src/styles/global.css": {
+    "file": "assets/global-h3JjqrQt.css",
+    "src": "/Users/mohammadafzal/Documents/development/personal/pokidex/src/styles/global.css"
+  },
+  "__vite-browser-external": {
+    "file": "assets/__vite-browser-external-BIHI7g3E.js",
+    "name": "__vite-browser-external",
+    "src": "__vite-browser-external",
+    "isDynamicEntry": true
+  },
+  "_client-hqi2Bekw.js": {
+    "file": "assets/client-hqi2Bekw.js",
+    "name": "client",
+    "dynamicImports": [
+      "__vite-browser-external",
+      "__vite-browser-external",
+      "__vite-browser-external",
+      "__vite-browser-external",
+      "src/routes/index.tsx?tsr-split=component",
+      "src/routes/pokemon/$pokemonId/index.tsx?tsr-split=component"
+    ],
+    "assets": [
+      "assets/global-h3JjqrQt.css"
+    ]
+  },
+  "_pokemon-colors-CX9iZGGD.js": {
+    "file": "assets/pokemon-colors-CX9iZGGD.js",
+    "name": "pokemon-colors",
+    "imports": [
+      "_client-hqi2Bekw.js"
+    ]
+  },
+  "src/routes/index.tsx?tsr-split=component": {
+    "file": "assets/index-C7XH2thd.js",
+    "name": "index",
+    "src": "src/routes/index.tsx?tsr-split=component",
+    "isDynamicEntry": true,
+    "imports": [
+      "_client-hqi2Bekw.js",
+      "_pokemon-colors-CX9iZGGD.js"
+    ]
+  },
+  "src/routes/pokemon/$pokemonId/index.tsx?tsr-split=component": {
+    "file": "assets/index-DI6gITXp.js",
+    "name": "index",
+    "src": "src/routes/pokemon/$pokemonId/index.tsx?tsr-split=component",
+    "isDynamicEntry": true,
+    "imports": [
+      "_client-hqi2Bekw.js",
+      "_pokemon-colors-CX9iZGGD.js"
+    ]
+  },
+  "virtual:$vinxi/handler/client": {
+    "file": "assets/client-CGlB8Oyy.js",
+    "name": "client",
+    "src": "virtual:$vinxi/handler/client",
+    "isEntry": true,
+    "imports": [
+      "_client-hqi2Bekw.js"
+    ]
+  }
+}

@@ -1,8 +1,12 @@
-import { Link, createFileRoute, useRouter } from "@tanstack/react-router";
-import { getRandomType, getTypeColor } from "@/utils/pokemon-colors";
-import { useEffect, useState } from "react";
+import * as React from "react";
 
-import type { PaginatedPokemonSummaryListReadable } from "@/client/index";
+import { Link, createFileRoute, useRouter } from "@tanstack/react-router";
+import type {
+  PaginatedPokemonSummaryListReadable,
+  PokemonSummaryReadable,
+} from "@/client/index";
+import { getRandomType, getTypeColor } from "@/utils/pokemon-colors";
+
 import { Pokeball } from "@/components/pokiball";
 import { createServerFn } from "@tanstack/react-start";
 import { pokemonList } from "@/client/index";
@@ -18,30 +22,33 @@ const getPokemonList = createServerFn({
 
 export const Route = createFileRoute("/")({
   component: RouteComponent,
-  loader: async () => await getPokemonList(),
+  loader: async () => {
+    const limit = 100;
+    let offset = 0;
+    const results: PokemonSummaryReadable[] = [];
+    let hasNextPage = true;
+    do {
+      console.log("offset", offset);
+      const data = await pokemonList({
+        query: {
+          limit,
+          offset,
+        },
+      });
+      results.push(...(data?.data?.results ?? []));
+      console.log(data?.data?.next);
+      offset += limit;
+      hasNextPage = !!data?.data?.next;
+    } while (hasNextPage);
+
+    return results;
+  },
 });
 
 function RouteComponent() {
   const router = useRouter();
   const state = Route.useLoaderData();
-  const [searchTerm, setSearchTerm] = useState("");
-  const [pokemonTypes, setPokemonTypes] = useState<Record<string, string>>({});
-
-  useEffect(() => {
-    // This function would ideally be fetching types from the API
-    // For now we're setting a static map of common types
-    setPokemonTypes({
-      "1": "grass", // Bulbasaur
-      "4": "fire", // Charmander
-      "7": "water", // Squirtle
-      "25": "electric", // Pikachu
-      "39": "fairy", // Jigglypuff
-      "54": "water", // Psyduck
-      "92": "ghost", // Gastly
-      "150": "psychic", // Mewtwo
-    });
-  }, []);
-
+  const [searchTerm, setSearchTerm] = React.useState("");
   if (!state) {
     return (
       <div className="flex justify-center items-center min-h-screen">
@@ -50,7 +57,7 @@ function RouteComponent() {
     );
   }
 
-  const filteredPokemon = state.results?.filter((pokemon) =>
+  const filteredPokemon = state?.filter((pokemon) =>
     pokemon.name.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
@@ -65,6 +72,13 @@ function RouteComponent() {
           <p className="text-xl text-center mb-8 max-w-2xl mx-auto">
             Explore and discover all your favorite Pokémon in one place
           </p>
+          <input
+            type="text"
+            placeholder="Search for a Pokémon"
+            className="w-full p-2 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500"
+            value={searchTerm}
+            onChange={(e) => setSearchTerm(e.target.value)}
+          />
         </div>
       </div>
 
@@ -80,7 +94,7 @@ function RouteComponent() {
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-8">
           {filteredPokemon?.map((pokemon) => {
             const id = getPokemonId(pokemon.url);
-            const pokemonType = pokemonTypes[id] || getRandomType(id);
+            const pokemonType = getRandomType(id);
             return (
               <Link
                 key={pokemon.name}

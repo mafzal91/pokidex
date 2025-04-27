@@ -1,3 +1,128 @@
+export const pokemonGames = [
+  "DPPt",
+  "HGSS",
+  "BW_B2W2",
+  "HOME",
+  "BDSP",
+] as const;
+
+// Define types based on the games array
+export type PokemonGame = (typeof pokemonGames)[number];
+export type GameColorMap = Record<PokemonGame, string>;
+
+export const pokemonColors = [
+  {
+    id: 0,
+    name: "Red",
+    hex: {
+      DPPt: "#E33030",
+      HGSS: "#E33030",
+      BW_B2W2: "#F35969",
+      HOME: "#F54C4C",
+      BDSP: "#E60033",
+    } as GameColorMap,
+  },
+  {
+    id: 1,
+    name: "Blue",
+    hex: {
+      DPPt: "#4149EB",
+      HGSS: "#4149EB",
+      BW_B2W2: "#308AF3",
+      HOME: "#8098FD",
+      BDSP: "#0095D9",
+    } as GameColorMap,
+  },
+  {
+    id: 2,
+    name: "Yellow",
+    hex: {
+      DPPt: "#EBE361",
+      HGSS: "#FBE379",
+      BW_B2W2: "#F3D349",
+      HOME: "#FAEE2D",
+      BDSP: "#FFD900",
+    } as GameColorMap,
+  },
+  {
+    id: 3,
+    name: "Green",
+    hex: {
+      DPPt: "#92CB61",
+      HGSS: "#9AEB82",
+      BW_B2W2: "#41BA69",
+      HOME: "#5FCB5C",
+      BDSP: "#3EB370",
+    } as GameColorMap,
+  },
+  {
+    id: 4,
+    name: "Black",
+    hex: {
+      DPPt: "#282830",
+      HGSS: "#717182",
+      BW_B2W2: "#595959",
+      HOME: "#232323",
+      BDSP: "#2B2B2B",
+    } as GameColorMap,
+  },
+  {
+    id: 5,
+    name: "Brown",
+    hex: {
+      DPPt: "#D38230",
+      HGSS: "#D38230",
+      BW_B2W2: "#B27130",
+      HOME: "#D89948",
+      BDSP: "#965042",
+    } as GameColorMap,
+  },
+  {
+    id: 6,
+    name: "Purple",
+    hex: {
+      DPPt: "#BA79F3",
+      HGSS: "#CB829A",
+      BW_B2W2: "#AA69C3",
+      HOME: "#BE7FFF",
+      BDSP: "#884898",
+    } as GameColorMap,
+  },
+  {
+    id: 7,
+    name: "Gray",
+    hex: {
+      DPPt: "#B2B2BA",
+      HGSS: "#B2B2BA",
+      BW_B2W2: "#A2A2A2",
+      HOME: "#BCBCBC",
+      BDSP: "#7D7D7D",
+    } as GameColorMap,
+  },
+  {
+    id: 8,
+    name: "White",
+    hex: {
+      DPPt: "#F3F3F3",
+      HGSS: "#F3F3F3",
+      BW_B2W2: "#F3F3F3",
+      HOME: "#FFFFFF",
+      BDSP: "#FFFFFF",
+    } as GameColorMap,
+  },
+  {
+    id: 9,
+    name: "Pink",
+    hex: {
+      DPPt: "#FB82EB",
+      HGSS: "#FB82EB",
+      BW_B2W2: "#FB92CB",
+      HOME: "#FF9EC7",
+      BDSP: "#E38698",
+    } as GameColorMap,
+  },
+];
+
 export function getTypeColor(type: string): string {
   const typeColors: Record<string, string> = {
     normal: "#A8A77A",

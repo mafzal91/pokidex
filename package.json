@@ -6,6 +6,7 @@
   "type": "module",
   "scripts": {
     "predev": "npm run generate:api",
+    "prebuild": "npm run generate:api",
     "dev": "vinxi dev",
     "build": "vinxi build",
     "start": "vinxi start",
