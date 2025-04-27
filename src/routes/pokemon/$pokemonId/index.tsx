@@ -43,7 +43,10 @@ function RouteComponent() {
   const primaryTypeColor = getTypeColor(primaryType);
 
   return (
-    <div className="min-h-screen" style={{ backgroundColor: primaryTypeColor }}>
+    <div
+      className="flex flex-col min-h-screen"
+      style={{ backgroundColor: primaryTypeColor }}
+    >
       {/* Hero Header */}
       <div className="text-white p-4">
         <div className="container mx-auto">
@@ -51,34 +54,38 @@ function RouteComponent() {
         </div>
       </div>
 
-      <div className="flex flex-col md:items-center md:justify-center">
-        <div className="px-10">
-          <div className="text-white font-bold text-opacity-70 mb-2">
-            #{pokemon.id.toString().padStart(3, "0")}
-          </div>
-          <h1 className="text-white text-4xl font-extrabold capitalize mb-4 tracking-tight">
-            {pokemon.name}
-          </h1>
-        </div>
-        <div className="flex flex-row gap-4 px-10">
-          <div
-            className="shrink-0 text-white font-bold text-opacity-70 rotate-180"
-            style={{ writingMode: "vertical-rl" }}
-          >
-            Region: Kanto
+      <div className="grow flex flex-col md:flex-row md:items-center md:justify-center px-10">
+        <div className="flex flex-col gap-y-4 justify-between items-stretch h-full">
+          <div className="flex flex-col gap-y-3">
+            <div className="text-white font-bold text-opacity-70">
+              #{pokemon.id.toString().padStart(3, "0")}
+            </div>
+            <h1 className="text-white text-4xl font-extrabold capitalize tracking-tight">
+              {pokemon.name}
+            </h1>
           </div>
 
-          <div className="flex flex-col justify-end">
-            <div className="text-white">
-              Height: {toMeters(pokemon.height)}m
+          <div className="flex flex-row gap-4 ">
+            <div
+              className="shrink-0 text-white font-bold text-opacity-70 rotate-180"
+              style={{ writingMode: "vertical-rl" }}
+            >
+              Region: Kanto
             </div>
-            <div className="text-white">
-              Weight: {toKilograms(pokemon.weight)}kg
+
+            <div className="flex flex-col justify-end">
+              <div className="text-white">
+                Height: {toMeters(pokemon.height)}m
+              </div>
+              <div className="text-white">
+                Weight: {toKilograms(pokemon.weight)}kg
+              </div>
             </div>
           </div>
         </div>
 
-        <div className="size-40 md:size-48 flex-shrink-0 relative z-10 transform transition-transform duration-300">
+        {/* Pokemon Image */}
+        <div className="h-full md:h-128 grow aspect-square">
           <img
             src={
               pokemon.sprites.other?.["official-artwork"]?.front_default || ""
@@ -88,8 +95,8 @@ function RouteComponent() {
           />
         </div>
 
-        <div className="flex flex-col">
-          <div className="flex flex-wrap gap-2">
+        <div className="flex flex-col gap-y-4">
+          <div className="flex flex-wrap gap-2 items-center md:justify-none">
             {pokemon.types.map((type) => (
               <div
                 key={type.type.name}
@@ -100,8 +107,30 @@ function RouteComponent() {
               </div>
             ))}
           </div>
+          <div className="mt-4">
+            <span className="text-white text-5xl font-nunito font-extrabold text-shadow-lg">
+              Base Stats:
+            </span>
+          </div>
+          <div className="flex flex-row flex-wrap gap-4 border-l-4 border-white border-opacity-50 pl-4">
+            {pokemon.stats.map((stat) => (
+              <Stat
+                key={stat.stat.name}
+                label={stat.stat.name}
+                value={stat.base_stat}
+              />
+            ))}
+          </div>
         </div>
       </div>
+    </div>
+  );
+}
+
+function Stat({ label, value }: { label: string; value: number }) {
+  return (
+    <div className="flex flex-row gap-2 bg-white rounded-2xl px-3.5 py-2.5 font-nunito font-extrabold uppercase shadow-lg">
+      {label}:&nbsp;{value}
     </div>
   );
 }
