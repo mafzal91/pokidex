@@ -1,63 +1,53 @@
 {
   "/Users/mohammadafzal/Documents/development/personal/pokidex/src/styles/global.css": {
-    "file": "assets/global-h3JjqrQt.css",
+    "file": "assets/global-BPIP_FWw.css",
     "src": "/Users/mohammadafzal/Documents/development/personal/pokidex/src/styles/global.css"
   },
-  "__vite-browser-external": {
-    "file": "assets/__vite-browser-external-BIHI7g3E.js",
-    "name": "__vite-browser-external",
-    "src": "__vite-browser-external",
-    "isDynamicEntry": true
-  },
-  "_client-hqi2Bekw.js": {
-    "file": "assets/client-hqi2Bekw.js",
+  "_client-DyBz_VP7.js": {
+    "file": "assets/client-DyBz_VP7.js",
     "name": "client",
     "dynamicImports": [
-      "__vite-browser-external",
-      "__vite-browser-external",
-      "__vite-browser-external",
-      "__vite-browser-external",
       "src/routes/index.tsx?tsr-split=component",
       "src/routes/pokemon/$pokemonId/index.tsx?tsr-split=component"
     ],
     "assets": [
-      "assets/global-h3JjqrQt.css"
+      "assets/global-BPIP_FWw.css"
     ]
   },
-  "_pokemon-colors-CX9iZGGD.js": {
-    "file": "assets/pokemon-colors-CX9iZGGD.js",
-    "name": "pokemon-colors",
+  "_link-BL-2c1SS.js": {
+    "file": "assets/link-BL-2c1SS.js",
+    "name": "link",
     "imports": [
-      "_client-hqi2Bekw.js"
+      "_client-DyBz_VP7.js"
     ]
   },
   "src/routes/index.tsx?tsr-split=component": {
-    "file": "assets/index-C7XH2thd.js",
+    "file": "assets/index-BghGfwP_.js",
     "name": "index",
     "src": "src/routes/index.tsx?tsr-split=component",
     "isDynamicEntry": true,
     "imports": [
-      "_client-hqi2Bekw.js",
-      "_pokemon-colors-CX9iZGGD.js"
+      "_client-DyBz_VP7.js",
+      "_link-BL-2c1SS.js"
     ]
   },
   "src/routes/pokemon/$pokemonId/index.tsx?tsr-split=component": {
-    "file": "assets/index-DI6gITXp.js",
+    "file": "assets/index-DfCEfgPA.js",
     "name": "index",
     "src": "src/routes/pokemon/$pokemonId/index.tsx?tsr-split=component",
     "isDynamicEntry": true,
     "imports": [
-      "_client-hqi2Bekw.js",
-      "_pokemon-colors-CX9iZGGD.js"
+      "_client-DyBz_VP7.js",
+      "_link-BL-2c1SS.js"
     ]
   },
   "virtual:$vinxi/handler/client": {
-    "file": "assets/client-CGlB8Oyy.js",
+    "file": "assets/client-DWvec8P2.js",
     "name": "client",
     "src": "virtual:$vinxi/handler/client",
     "isEntry": true,
     "imports": [
-      "_client-hqi2Bekw.js"
+      "_client-DyBz_VP7.js"
     ]
   }
 }

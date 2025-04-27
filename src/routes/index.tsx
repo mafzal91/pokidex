@@ -5,7 +5,6 @@ import type {
   PaginatedPokemonSummaryListReadable,
   PokemonSummaryReadable,
 } from "@/client/index";
-import { getRandomType, getTypeColor } from "@/utils/pokemon-colors";
 
 import { Pokeball } from "@/components/pokiball";
 import { createServerFn } from "@tanstack/react-start";
@@ -28,7 +27,6 @@ export const Route = createFileRoute("/")({
     const results: PokemonSummaryReadable[] = [];
     let hasNextPage = true;
     do {
-      console.log("offset", offset);
       const data = await pokemonList({
         query: {
           limit,
@@ -36,7 +34,6 @@ export const Route = createFileRoute("/")({
         },
       });
       results.push(...(data?.data?.results ?? []));
-      console.log(data?.data?.next);
       offset += limit;
       hasNextPage = !!data?.data?.next;
     } while (hasNextPage);
@@ -94,39 +91,28 @@ function RouteComponent() {
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-8">
           {filteredPokemon?.map((pokemon) => {
             const id = getPokemonId(pokemon.url);
-            const pokemonType = getRandomType(id);
             return (
               <Link
                 key={pokemon.name}
                 to="/pokemon/$pokemonId"
                 params={{ pokemonId: pokemon.name }}
-                className="group flex flex-col rounded-2xl overflow-hidden shadow-lg transition-all duration-300 transform hover:scale-105"
+                className="group flex flex-col rounded-2xl overflow-hidden shadow-sm transition-all duration-300 transform hover:scale-105"
               >
-                <div
-                  className="p-6 flex flex-col justify-between h-full relative"
-                  style={{ backgroundColor: getTypeColor(pokemonType) }}
-                >
+                <div className="p-6 flex flex-col justify-between h-full relative">
                   {/* Pokeball Background */}
                   <div className="absolute top-4 right-4 opacity-30">
                     <Pokeball />
                   </div>
 
                   {/* Pokemon Number */}
-                  <div className="text-white font-bold text-opacity-70 mb-4 z-10">
+                  <div className="font-bold text-opacity-70 mb-4 z-10">
                     #{id.padStart(3, "0")}
                   </div>
 
                   {/* Pokemon Name */}
-                  <h2 className="text-white capitalize text-xl font-extrabold mb-2 z-10">
+                  <h2 className="capitalize text-xl font-extrabold mb-2 z-10">
                     {pokemon.name}
                   </h2>
-
-                  {/* Type Badge */}
-                  <div className="mb-3 z-10">
-                    <span className="text-sm inline-block py-1 px-3 rounded-full capitalize bg-white bg-opacity-30 text-white">
-                      {pokemonType}
-                    </span>
-                  </div>
 
                   {/* Pokemon Image */}
                   <div className="mt-4 flex justify-end">

@@ -12,7 +12,7 @@ import { pathToFileURL } from 'node:url';
 import { isRedirect, isNotFound, isPlainObject as isPlainObject$1, encode as encode$1 } from '@tanstack/router-core';
 import M from 'tiny-invariant';
 import { eventHandler as eventHandler$1, toWebRequest, getResponseStatus, getEvent, createStartHandler, defineHandlerCallback, transformReadableStreamWithRouter, transformPipeableStreamWithRouter, getHeaders } from '@tanstack/start-server-core';
-import { startSerializer, createServerFn, mergeHeaders as mergeHeaders$2 } from '@tanstack/start-client-core';
+import { startSerializer, mergeHeaders as mergeHeaders$2 } from '@tanstack/start-client-core';
 import { createRouter as createRouter$2, createRootRoute, createFileRoute, RouterProvider, lazyRouteComponent, Outlet, HeadContent, Scripts } from '@tanstack/react-router';
 import { jsx, jsxs } from 'react/jsx-runtime';
 import { createClient, createConfig } from '@hey-api/client-fetch';
@@ -591,7 +591,7 @@ const defuFn = createDefu((object, key, currentValue) => {
   }
 });
 
-function o(n){throw new Error(`${n} is not implemented yet!`)}let i$1 = class i extends EventEmitter{__unenv__={};readableEncoding=null;readableEnded=true;readableFlowing=false;readableHighWaterMark=0;readableLength=0;readableObjectMode=false;readableAborted=false;readableDidRead=false;closed=false;errored=null;readable=false;destroyed=false;static from(e,t){return new i(t)}constructor(e){super();}_read(e){}read(e){}setEncoding(e){return this}pause(){return this}resume(){return this}isPaused(){return  true}unpipe(e){return this}unshift(e,t){}wrap(e){return this}push(e,t){return  false}_destroy(e,t){this.removeAllListeners();}destroy(e){return this.destroyed=true,this._destroy(e),this}pipe(e,t){return {}}compose(e,t){throw new Error("Method not implemented.")}[Symbol.asyncDispose](){return this.destroy(),Promise.resolve()}async*[Symbol.asyncIterator](){throw o("Readable.asyncIterator")}iterator(e){throw o("Readable.iterator")}map(e,t){throw o("Readable.map")}filter(e,t){throw o("Readable.filter")}forEach(e,t){throw o("Readable.forEach")}reduce(e,t,r){throw o("Readable.reduce")}find(e,t){throw o("Readable.find")}findIndex(e,t){throw o("Readable.findIndex")}some(e,t){throw o("Readable.some")}toArray(e){throw o("Readable.toArray")}every(e,t){throw o("Readable.every")}flatMap(e,t){throw o("Readable.flatMap")}drop(e,t){throw o("Readable.drop")}take(e,t){throw o("Readable.take")}asIndexedPairs(e){throw o("Readable.asIndexedPairs")}};let l$1 = class l extends EventEmitter{__unenv__={};writable=true;writableEnded=false;writableFinished=false;writableHighWaterMark=0;writableLength=0;writableObjectMode=false;writableCorked=0;closed=false;errored=null;writableNeedDrain=false;destroyed=false;_data;_encoding="utf8";constructor(e){super();}pipe(e,t){return {}}_write(e,t,r){if(this.writableEnded){r&&r();return}if(this._data===void 0)this._data=e;else {const s=typeof this._data=="string"?Buffer$1.from(this._data,this._encoding||t||"utf8"):this._data,a=typeof e=="string"?Buffer$1.from(e,t||this._encoding||"utf8"):e;this._data=Buffer$1.concat([s,a]);}this._encoding=t,r&&r();}_writev(e,t){}_destroy(e,t){}_final(e){}write(e,t,r){const s=typeof t=="string"?this._encoding:"utf8",a=typeof t=="function"?t:typeof r=="function"?r:void 0;return this._write(e,s,a),true}setDefaultEncoding(e){return this}end(e,t,r){const s=typeof e=="function"?e:typeof t=="function"?t:typeof r=="function"?r:void 0;if(this.writableEnded)return s&&s(),this;const a=e===s?void 0:e;if(a){const u=t===s?void 0:t;this.write(a,u,s);}return this.writableEnded=true,this.writableFinished=true,this.emit("close"),this.emit("finish"),this}cork(){}uncork(){}destroy(e){return this.destroyed=true,delete this._data,this.removeAllListeners(),this}compose(e,t){throw new Error("Method not implemented.")}};const c=class{allowHalfOpen=true;_destroy;constructor(e=new i$1,t=new l$1){Object.assign(this,e),Object.assign(this,t),this._destroy=g(e._destroy,t._destroy);}};function _$1(){return Object.assign(c.prototype,i$1.prototype),Object.assign(c.prototype,l$1.prototype),c}function g(...n){return function(...e){for(const t of n)t(...e);}}const m=_$1();class A extends m{__unenv__={};bufferSize=0;bytesRead=0;bytesWritten=0;connecting=false;destroyed=false;pending=false;localAddress="";localPort=0;remoteAddress="";remoteFamily="";remotePort=0;autoSelectFamilyAttemptedAddresses=[];readyState="readOnly";constructor(e){super();}write(e,t,r){return  false}connect(e,t,r){return this}end(e,t,r){return this}setEncoding(e){return this}pause(){return this}resume(){return this}setTimeout(e,t){return this}setNoDelay(e){return this}setKeepAlive(e,t){return this}address(){return {}}unref(){return this}ref(){return this}destroySoon(){this.destroy();}resetAndDestroy(){const e=new Error("ERR_SOCKET_CLOSED");return e.code="ERR_SOCKET_CLOSED",this.destroy(e),this}}class y extends i$1{aborted=false;httpVersion="1.1";httpVersionMajor=1;httpVersionMinor=1;complete=true;connection;socket;headers={};trailers={};method="GET";url="/";statusCode=200;statusMessage="";closed=false;errored=null;readable=false;constructor(e){super(),this.socket=this.connection=e||new A;}get rawHeaders(){const e=this.headers,t=[];for(const r in e)if(Array.isArray(e[r]))for(const s of e[r])t.push(r,s);else t.push(r,e[r]);return t}get rawTrailers(){return []}setTimeout(e,t){return this}get headersDistinct(){return p(this.headers)}get trailersDistinct(){return p(this.trailers)}}function p(n){const e={};for(const[t,r]of Object.entries(n))t&&(e[t]=(Array.isArray(r)?r:[r]).filter(Boolean));return e}class w extends l$1{statusCode=200;statusMessage="";upgrading=false;chunkedEncoding=false;shouldKeepAlive=false;useChunkedEncodingByDefault=false;sendDate=false;finished=false;headersSent=false;strictContentLength=false;connection=null;socket=null;req;_headers={};constructor(e){super(),this.req=e;}assignSocket(e){e._httpMessage=this,this.socket=e,this.connection=e,this.emit("socket",e),this._flush();}_flush(){this.flushHeaders();}detachSocket(e){}writeContinue(e){}writeHead(e,t,r){e&&(this.statusCode=e),typeof t=="string"&&(this.statusMessage=t,t=void 0);const s=r||t;if(s&&!Array.isArray(s))for(const a in s)this.setHeader(a,s[a]);return this.headersSent=true,this}writeProcessing(){}setTimeout(e,t){return this}appendHeader(e,t){e=e.toLowerCase();const r=this._headers[e],s=[...Array.isArray(r)?r:[r],...Array.isArray(t)?t:[t]].filter(Boolean);return this._headers[e]=s.length>1?s:s[0],this}setHeader(e,t){return this._headers[e.toLowerCase()]=t,this}setHeaders(e){for(const[t,r]of Object.entries(e))this.setHeader(t,r);return this}getHeader(e){return this._headers[e.toLowerCase()]}getHeaders(){return this._headers}getHeaderNames(){return Object.keys(this._headers)}hasHeader(e){return e.toLowerCase()in this._headers}removeHeader(e){delete this._headers[e.toLowerCase()];}addTrailers(e){}flushHeaders(){}writeEarlyHints(e,t){typeof t=="function"&&t();}}const E=(()=>{const n=function(){};return n.prototype=Object.create(null),n})();function R(n={}){const e=new E,t=Array.isArray(n)||H(n)?n:Object.entries(n);for(const[r,s]of t)if(s){if(e[r]===void 0){e[r]=s;continue}e[r]=[...Array.isArray(e[r])?e[r]:[e[r]],...Array.isArray(s)?s:[s]];}return e}function H(n){return typeof n?.entries=="function"}function S$1(n={}){if(n instanceof Headers)return n;const e=new Headers;for(const[t,r]of Object.entries(n))if(r!==void 0){if(Array.isArray(r)){for(const s of r)e.append(t,String(s));continue}e.set(t,String(r));}return e}const C$1=new Set([101,204,205,304]);async function b(n,e){const t=new y,r=new w(t);t.url=e.url?.toString()||"/";let s;if(!t.url.startsWith("/")){const d=new URL(t.url);s=d.host,t.url=d.pathname+d.search+d.hash;}t.method=e.method||"GET",t.headers=R(e.headers||{}),t.headers.host||(t.headers.host=e.host||s||"localhost"),t.connection.encrypted=t.connection.encrypted||e.protocol==="https",t.body=e.body||null,t.__unenv__=e.context,await n(t,r);let a=r._data;(C$1.has(r.statusCode)||t.method.toUpperCase()==="HEAD")&&(a=null,delete r._headers["content-length"]);const u={status:r.statusCode,statusText:r.statusMessage,headers:r._headers,body:a};return t.destroy(),r.destroy(),u}async function O$1(n,e,t={}){try{const r=await b(n,{url:e,...t});return new Response(r.body,{status:r.status,statusText:r.statusText,headers:S$1(r.headers)})}catch(r){return new Response(r.toString(),{status:Number.parseInt(r.statusCode||r.code)||500,statusText:r.statusText})}}
+function o(n){throw new Error(`${n} is not implemented yet!`)}let i$1 = class i extends EventEmitter{__unenv__={};readableEncoding=null;readableEnded=true;readableFlowing=false;readableHighWaterMark=0;readableLength=0;readableObjectMode=false;readableAborted=false;readableDidRead=false;closed=false;errored=null;readable=false;destroyed=false;static from(e,t){return new i(t)}constructor(e){super();}_read(e){}read(e){}setEncoding(e){return this}pause(){return this}resume(){return this}isPaused(){return  true}unpipe(e){return this}unshift(e,t){}wrap(e){return this}push(e,t){return  false}_destroy(e,t){this.removeAllListeners();}destroy(e){return this.destroyed=true,this._destroy(e),this}pipe(e,t){return {}}compose(e,t){throw new Error("Method not implemented.")}[Symbol.asyncDispose](){return this.destroy(),Promise.resolve()}async*[Symbol.asyncIterator](){throw o("Readable.asyncIterator")}iterator(e){throw o("Readable.iterator")}map(e,t){throw o("Readable.map")}filter(e,t){throw o("Readable.filter")}forEach(e,t){throw o("Readable.forEach")}reduce(e,t,r){throw o("Readable.reduce")}find(e,t){throw o("Readable.find")}findIndex(e,t){throw o("Readable.findIndex")}some(e,t){throw o("Readable.some")}toArray(e){throw o("Readable.toArray")}every(e,t){throw o("Readable.every")}flatMap(e,t){throw o("Readable.flatMap")}drop(e,t){throw o("Readable.drop")}take(e,t){throw o("Readable.take")}asIndexedPairs(e){throw o("Readable.asIndexedPairs")}};let l$1 = class l extends EventEmitter{__unenv__={};writable=true;writableEnded=false;writableFinished=false;writableHighWaterMark=0;writableLength=0;writableObjectMode=false;writableCorked=0;closed=false;errored=null;writableNeedDrain=false;destroyed=false;_data;_encoding="utf8";constructor(e){super();}pipe(e,t){return {}}_write(e,t,r){if(this.writableEnded){r&&r();return}if(this._data===void 0)this._data=e;else {const s=typeof this._data=="string"?Buffer$1.from(this._data,this._encoding||t||"utf8"):this._data,a=typeof e=="string"?Buffer$1.from(e,t||this._encoding||"utf8"):e;this._data=Buffer$1.concat([s,a]);}this._encoding=t,r&&r();}_writev(e,t){}_destroy(e,t){}_final(e){}write(e,t,r){const s=typeof t=="string"?this._encoding:"utf8",a=typeof t=="function"?t:typeof r=="function"?r:void 0;return this._write(e,s,a),true}setDefaultEncoding(e){return this}end(e,t,r){const s=typeof e=="function"?e:typeof t=="function"?t:typeof r=="function"?r:void 0;if(this.writableEnded)return s&&s(),this;const a=e===s?void 0:e;if(a){const u=t===s?void 0:t;this.write(a,u,s);}return this.writableEnded=true,this.writableFinished=true,this.emit("close"),this.emit("finish"),this}cork(){}uncork(){}destroy(e){return this.destroyed=true,delete this._data,this.removeAllListeners(),this}compose(e,t){throw new Error("Method not implemented.")}};const c=class{allowHalfOpen=true;_destroy;constructor(e=new i$1,t=new l$1){Object.assign(this,e),Object.assign(this,t),this._destroy=g(e._destroy,t._destroy);}};function _$1(){return Object.assign(c.prototype,i$1.prototype),Object.assign(c.prototype,l$1.prototype),c}function g(...n){return function(...e){for(const t of n)t(...e);}}const m=_$1();class A extends m{__unenv__={};bufferSize=0;bytesRead=0;bytesWritten=0;connecting=false;destroyed=false;pending=false;localAddress="";localPort=0;remoteAddress="";remoteFamily="";remotePort=0;autoSelectFamilyAttemptedAddresses=[];readyState="readOnly";constructor(e){super();}write(e,t,r){return  false}connect(e,t,r){return this}end(e,t,r){return this}setEncoding(e){return this}pause(){return this}resume(){return this}setTimeout(e,t){return this}setNoDelay(e){return this}setKeepAlive(e,t){return this}address(){return {}}unref(){return this}ref(){return this}destroySoon(){this.destroy();}resetAndDestroy(){const e=new Error("ERR_SOCKET_CLOSED");return e.code="ERR_SOCKET_CLOSED",this.destroy(e),this}}let y$1 = class y extends i$1{aborted=false;httpVersion="1.1";httpVersionMajor=1;httpVersionMinor=1;complete=true;connection;socket;headers={};trailers={};method="GET";url="/";statusCode=200;statusMessage="";closed=false;errored=null;readable=false;constructor(e){super(),this.socket=this.connection=e||new A;}get rawHeaders(){const e=this.headers,t=[];for(const r in e)if(Array.isArray(e[r]))for(const s of e[r])t.push(r,s);else t.push(r,e[r]);return t}get rawTrailers(){return []}setTimeout(e,t){return this}get headersDistinct(){return p(this.headers)}get trailersDistinct(){return p(this.trailers)}};function p(n){const e={};for(const[t,r]of Object.entries(n))t&&(e[t]=(Array.isArray(r)?r:[r]).filter(Boolean));return e}class w extends l$1{statusCode=200;statusMessage="";upgrading=false;chunkedEncoding=false;shouldKeepAlive=false;useChunkedEncodingByDefault=false;sendDate=false;finished=false;headersSent=false;strictContentLength=false;connection=null;socket=null;req;_headers={};constructor(e){super(),this.req=e;}assignSocket(e){e._httpMessage=this,this.socket=e,this.connection=e,this.emit("socket",e),this._flush();}_flush(){this.flushHeaders();}detachSocket(e){}writeContinue(e){}writeHead(e,t,r){e&&(this.statusCode=e),typeof t=="string"&&(this.statusMessage=t,t=void 0);const s=r||t;if(s&&!Array.isArray(s))for(const a in s)this.setHeader(a,s[a]);return this.headersSent=true,this}writeProcessing(){}setTimeout(e,t){return this}appendHeader(e,t){e=e.toLowerCase();const r=this._headers[e],s=[...Array.isArray(r)?r:[r],...Array.isArray(t)?t:[t]].filter(Boolean);return this._headers[e]=s.length>1?s:s[0],this}setHeader(e,t){return this._headers[e.toLowerCase()]=t,this}setHeaders(e){for(const[t,r]of Object.entries(e))this.setHeader(t,r);return this}getHeader(e){return this._headers[e.toLowerCase()]}getHeaders(){return this._headers}getHeaderNames(){return Object.keys(this._headers)}hasHeader(e){return e.toLowerCase()in this._headers}removeHeader(e){delete this._headers[e.toLowerCase()];}addTrailers(e){}flushHeaders(){}writeEarlyHints(e,t){typeof t=="function"&&t();}}const E=(()=>{const n=function(){};return n.prototype=Object.create(null),n})();function R(n={}){const e=new E,t=Array.isArray(n)||H(n)?n:Object.entries(n);for(const[r,s]of t)if(s){if(e[r]===void 0){e[r]=s;continue}e[r]=[...Array.isArray(e[r])?e[r]:[e[r]],...Array.isArray(s)?s:[s]];}return e}function H(n){return typeof n?.entries=="function"}function S$1(n={}){if(n instanceof Headers)return n;const e=new Headers;for(const[t,r]of Object.entries(n))if(r!==void 0){if(Array.isArray(r)){for(const s of r)e.append(t,String(s));continue}e.set(t,String(r));}return e}const C$1=new Set([101,204,205,304]);async function b$1(n,e){const t=new y$1,r=new w(t);t.url=e.url?.toString()||"/";let s;if(!t.url.startsWith("/")){const d=new URL(t.url);s=d.host,t.url=d.pathname+d.search+d.hash;}t.method=e.method||"GET",t.headers=R(e.headers||{}),t.headers.host||(t.headers.host=e.host||s||"localhost"),t.connection.encrypted=t.connection.encrypted||e.protocol==="https",t.body=e.body||null,t.__unenv__=e.context,await n(t,r);let a=r._data;(C$1.has(r.statusCode)||t.method.toUpperCase()==="HEAD")&&(a=null,delete r._headers["content-length"]);const u={status:r.statusCode,statusText:r.statusMessage,headers:r._headers,body:a};return t.destroy(),r.destroy(),u}async function O$1(n,e,t={}){try{const r=await b$1(n,{url:e,...t});return new Response(r.body,{status:r.status,statusText:r.statusText,headers:S$1(r.headers)})}catch(r){return new Response(r.toString(),{status:Number.parseInt(r.statusCode||r.code)||500,statusText:r.statusText})}}
 
 function hasProp(obj, prop) {
   try {
@@ -4176,8 +4176,8 @@ async function errorHandler(error, event) {
   // H3 will handle fallback
 }
 
-const appConfig = {"name":"vinxi","routers":[{"name":"public","type":"static","dir":"./public","base":"/","root":"/Users/mohammadafzal/Documents/development/personal/pokidex","order":0,"outDir":"/Users/mohammadafzal/Documents/development/personal/pokidex/.vinxi/build/public"},{"name":"client","type":"client","target":"browser","handler":"src/client.tsx","base":"/_build","build":{"sourcemap":true},"root":"/Users/mohammadafzal/Documents/development/personal/pokidex","outDir":"/Users/mohammadafzal/Documents/development/personal/pokidex/.vinxi/build/client","order":1},{"name":"ssr","type":"http","target":"server","handler":"src/ssr.tsx","link":{"client":"client"},"root":"/Users/mohammadafzal/Documents/development/personal/pokidex","base":"/","outDir":"/Users/mohammadafzal/Documents/development/personal/pokidex/.vinxi/build/ssr","order":2},{"name":"server","type":"http","target":"server","base":"/_server","handler":"node_modules/@tanstack/start-server-functions-handler/dist/esm/index.js","root":"/Users/mohammadafzal/Documents/development/personal/pokidex","outDir":"/Users/mohammadafzal/Documents/development/personal/pokidex/.vinxi/build/server","order":3}],"server":{"preset":"vercel","experimental":{"asyncContext":true}},"root":"/Users/mohammadafzal/Documents/development/personal/pokidex"};
-				const buildManifest = {"client":{"/Users/mohammadafzal/Documents/development/personal/pokidex/src/styles/global.css":{"file":"assets/global-h3JjqrQt.css","src":"/Users/mohammadafzal/Documents/development/personal/pokidex/src/styles/global.css"},"__vite-browser-external":{"file":"assets/__vite-browser-external-BIHI7g3E.js","name":"__vite-browser-external","src":"__vite-browser-external","isDynamicEntry":true},"_client-hqi2Bekw.js":{"file":"assets/client-hqi2Bekw.js","name":"client","dynamicImports":["__vite-browser-external","__vite-browser-external","__vite-browser-external","__vite-browser-external","src/routes/index.tsx?tsr-split=component","src/routes/pokemon/$pokemonId/index.tsx?tsr-split=component"],"assets":["assets/global-h3JjqrQt.css"]},"_pokemon-colors-CX9iZGGD.js":{"file":"assets/pokemon-colors-CX9iZGGD.js","name":"pokemon-colors","imports":["_client-hqi2Bekw.js"]},"src/routes/index.tsx?tsr-split=component":{"file":"assets/index-C7XH2thd.js","name":"index","src":"src/routes/index.tsx?tsr-split=component","isDynamicEntry":true,"imports":["_client-hqi2Bekw.js","_pokemon-colors-CX9iZGGD.js"]},"src/routes/pokemon/$pokemonId/index.tsx?tsr-split=component":{"file":"assets/index-DI6gITXp.js","name":"index","src":"src/routes/pokemon/$pokemonId/index.tsx?tsr-split=component","isDynamicEntry":true,"imports":["_client-hqi2Bekw.js","_pokemon-colors-CX9iZGGD.js"]},"virtual:$vinxi/handler/client":{"file":"assets/client-CGlB8Oyy.js","name":"client","src":"virtual:$vinxi/handler/client","isEntry":true,"imports":["_client-hqi2Bekw.js"]}},"ssr":{"/Users/mohammadafzal/Documents/development/personal/pokidex/src/styles/global.css":{"file":"assets/global-h3JjqrQt.css","src":"/Users/mohammadafzal/Documents/development/personal/pokidex/src/styles/global.css"},"_pokemon-colors-BEseCud9.js":{"file":"assets/pokemon-colors-BEseCud9.js","name":"pokemon-colors"},"_ssr-D62UHQT7.js":{"file":"assets/ssr-D62UHQT7.js","name":"ssr","dynamicImports":["src/routes/index.tsx?tsr-split=component","src/routes/pokemon/$pokemonId/index.tsx?tsr-split=component"],"assets":["assets/global-h3JjqrQt.css"]},"src/routes/index.tsx?tsr-split=component":{"file":"assets/index-BwbzrdpL.js","name":"index","src":"src/routes/index.tsx?tsr-split=component","isDynamicEntry":true,"imports":["_pokemon-colors-BEseCud9.js","_ssr-D62UHQT7.js"]},"src/routes/pokemon/$pokemonId/index.tsx?tsr-split=component":{"file":"assets/index-BWZRppow.js","name":"index","src":"src/routes/pokemon/$pokemonId/index.tsx?tsr-split=component","isDynamicEntry":true,"imports":["_pokemon-colors-BEseCud9.js","_ssr-D62UHQT7.js"]},"virtual:$vinxi/handler/ssr":{"file":"ssr.js","name":"ssr","src":"virtual:$vinxi/handler/ssr","isEntry":true,"imports":["_ssr-D62UHQT7.js"]}},"server":{"_index-xIYRZ9oo.js":{"file":"assets/index-xIYRZ9oo.js","name":"index","isDynamicEntry":true,"dynamicImports":["src/routes/index.tsx?tsr-split=component"]},"src/routes/index.tsx?tsr-split=component":{"file":"assets/index-C-3dJyN4.js","name":"index","src":"src/routes/index.tsx?tsr-split=component","isDynamicEntry":true,"imports":["_index-xIYRZ9oo.js"]},"virtual:$vinxi/handler/server":{"file":"server.js","name":"server","src":"virtual:$vinxi/handler/server","isEntry":true,"dynamicImports":["_index-xIYRZ9oo.js"]}}};
+const appConfig = {"name":"vinxi","routers":[{"name":"public","type":"static","dir":"./public","base":"/","root":"/Users/mohammadafzal/Documents/development/personal/pokidex","order":0,"outDir":"/Users/mohammadafzal/Documents/development/personal/pokidex/.vinxi/build/public"},{"name":"client","type":"client","target":"browser","handler":"src/client.tsx","base":"/_build","build":{"sourcemap":true},"root":"/Users/mohammadafzal/Documents/development/personal/pokidex","outDir":"/Users/mohammadafzal/Documents/development/personal/pokidex/.vinxi/build/client","order":1},{"name":"ssr","type":"http","target":"server","handler":"src/ssr.tsx","link":{"client":"client"},"root":"/Users/mohammadafzal/Documents/development/personal/pokidex","base":"/","outDir":"/Users/mohammadafzal/Documents/development/personal/pokidex/.vinxi/build/ssr","order":2},{"name":"server","type":"http","target":"server","base":"/_server","handler":"node_modules/@tanstack/start-server-functions-handler/dist/esm/index.js","root":"/Users/mohammadafzal/Documents/development/personal/pokidex","outDir":"/Users/mohammadafzal/Documents/development/personal/pokidex/.vinxi/build/server","order":3}],"server":{"prerender":{"crawlLinks":true},"hooks":{},"preset":"vercel","experimental":{"asyncContext":true}},"root":"/Users/mohammadafzal/Documents/development/personal/pokidex"};
+				const buildManifest = {"client":{"/Users/mohammadafzal/Documents/development/personal/pokidex/src/styles/global.css":{"file":"assets/global-BPIP_FWw.css","src":"/Users/mohammadafzal/Documents/development/personal/pokidex/src/styles/global.css"},"_client-DyBz_VP7.js":{"file":"assets/client-DyBz_VP7.js","name":"client","dynamicImports":["src/routes/index.tsx?tsr-split=component","src/routes/pokemon/$pokemonId/index.tsx?tsr-split=component"],"assets":["assets/global-BPIP_FWw.css"]},"_link-BL-2c1SS.js":{"file":"assets/link-BL-2c1SS.js","name":"link","imports":["_client-DyBz_VP7.js"]},"src/routes/index.tsx?tsr-split=component":{"file":"assets/index-BghGfwP_.js","name":"index","src":"src/routes/index.tsx?tsr-split=component","isDynamicEntry":true,"imports":["_client-DyBz_VP7.js","_link-BL-2c1SS.js"]},"src/routes/pokemon/$pokemonId/index.tsx?tsr-split=component":{"file":"assets/index-DfCEfgPA.js","name":"index","src":"src/routes/pokemon/$pokemonId/index.tsx?tsr-split=component","isDynamicEntry":true,"imports":["_client-DyBz_VP7.js","_link-BL-2c1SS.js"]},"virtual:$vinxi/handler/client":{"file":"assets/client-DWvec8P2.js","name":"client","src":"virtual:$vinxi/handler/client","isEntry":true,"imports":["_client-DyBz_VP7.js"]}},"ssr":{"/Users/mohammadafzal/Documents/development/personal/pokidex/src/styles/global.css":{"file":"assets/global-BPIP_FWw.css","src":"/Users/mohammadafzal/Documents/development/personal/pokidex/src/styles/global.css"},"_ssr-CJU4EHcp.js":{"file":"assets/ssr-CJU4EHcp.js","name":"ssr","dynamicImports":["src/routes/index.tsx?tsr-split=component","src/routes/pokemon/$pokemonId/index.tsx?tsr-split=component"],"assets":["assets/global-BPIP_FWw.css"]},"src/routes/index.tsx?tsr-split=component":{"file":"assets/index-DXNdrEJi.js","name":"index","src":"src/routes/index.tsx?tsr-split=component","isDynamicEntry":true,"imports":["_ssr-CJU4EHcp.js"]},"src/routes/pokemon/$pokemonId/index.tsx?tsr-split=component":{"file":"assets/index-DoTIrDB0.js","name":"index","src":"src/routes/pokemon/$pokemonId/index.tsx?tsr-split=component","isDynamicEntry":true,"imports":["_ssr-CJU4EHcp.js"]},"virtual:$vinxi/handler/ssr":{"file":"ssr.js","name":"ssr","src":"virtual:$vinxi/handler/ssr","isEntry":true,"imports":["_ssr-CJU4EHcp.js"]}},"server":{"src/routes/index.tsx?tsr-split=component&tsr-directive-use-server=":{"file":"assets/index-xB2Xpc09.js","name":"index","src":"src/routes/index.tsx?tsr-split=component&tsr-directive-use-server=","isDynamicEntry":true},"virtual:$vinxi/handler/server":{"file":"server.js","name":"server","src":"virtual:$vinxi/handler/server","isEntry":true,"dynamicImports":["src/routes/index.tsx?tsr-split=component&tsr-directive-use-server="]}}};
 
 				const routeManifest = {};
 
@@ -4436,7 +4436,7 @@ plugin,
 app
 ];
 
-const I = { "src_routes_index_tsx--getPokemonList_createServerFn_handler": { functionName: "getPokemonList_createServerFn_handler", importer: () => import('../build/index-xIYRZ9oo.mjs').then((n) => n.i) } }, z = eventHandler$1(O), d = I;
+const I = { "src_routes_index_tsx--getPokemonList_createServerFn_handler": { functionName: "getPokemonList_createServerFn_handler", importer: () => import('../build/index-xB2Xpc09.mjs') } }, z = eventHandler$1(O), d = I;
 async function O(n) {
   const t = toWebRequest(n);
   return await P$1({ request: t, event: n });
@@ -4489,63 +4489,63 @@ function C(n) {
 function _(e) {
   return jsx(RouterProvider, { router: e.router });
 }
-const K = defineHandlerCallback(async ({ request: e, router: t, responseHeaders: a }) => {
+const L = defineHandlerCallback(async ({ request: e, router: t, responseHeaders: r }) => {
   if (typeof m$1.renderToReadableStream == "function") {
-    const n = await m$1.renderToReadableStream(jsx(_, { router: t }), { signal: e.signal });
-    isbot(e.headers.get("User-Agent")) && await n.allReady;
-    const r = transformReadableStreamWithRouter(t, n);
-    return new Response(r, { status: t.state.statusCode, headers: a });
+    const o = await m$1.renderToReadableStream(jsx(_, { router: t }), { signal: e.signal });
+    isbot(e.headers.get("User-Agent")) && await o.allReady;
+    const n = transformReadableStreamWithRouter(t, o);
+    return new Response(n, { status: t.state.statusCode, headers: r });
   }
   if (typeof m$1.renderToPipeableStream == "function") {
-    const n = new PassThrough();
+    const o = new PassThrough();
     try {
-      const s = m$1.renderToPipeableStream(jsx(_, { router: t }), { ...isbot(e.headers.get("User-Agent")) ? { onAllReady() {
-        s.pipe(n);
+      const a = m$1.renderToPipeableStream(jsx(_, { router: t }), { ...isbot(e.headers.get("User-Agent")) ? { onAllReady() {
+        a.pipe(o);
       } } : { onShellReady() {
-        s.pipe(n);
-      } }, onError: (c, o) => {
-        console.error("Error in renderToPipeableStream:", c, o);
+        a.pipe(o);
+      } }, onError: (d, s) => {
+        console.error("Error in renderToPipeableStream:", d, s);
       } });
-    } catch (s) {
-      console.error("Error in renderToPipeableStream:", s);
+    } catch (a) {
+      console.error("Error in renderToPipeableStream:", a);
     }
-    const r = transformPipeableStreamWithRouter(t, n);
-    return new Response(r, { status: t.state.statusCode, headers: a });
+    const n = transformPipeableStreamWithRouter(t, o);
+    return new Response(n, { status: t.state.statusCode, headers: r });
   }
   throw new Error("No renderToReadableStream or renderToPipeableStream found in react-dom/server. Ensure you are using a version of react-dom that supports streaming.");
-}), Q = "/_build/assets/global-h3JjqrQt.css", h = createRootRoute({ head: () => ({ meta: [{ charSet: "utf-8" }, { name: "viewport", content: "width=device-width, initial-scale=1" }, { title: "Pokidex" }], links: [{ rel: "stylesheet", href: Q }] }), component: X });
+}), V = "/_build/assets/global-BPIP_FWw.css", y = createRootRoute({ head: () => ({ meta: [{ charSet: "utf-8" }, { name: "viewport", content: "width=device-width, initial-scale=1" }, { title: "Pokidex" }], links: [{ rel: "stylesheet", href: V }] }), component: X });
 function X() {
-  return jsx(V, { children: jsx(Outlet, {}) });
+  return jsx(Q, { children: jsx(Outlet, {}) });
 }
-function V({ children: e }) {
-  return jsxs("html", { lang: "en", children: [jsx("head", { children: jsx(HeadContent, {}) }), jsxs("body", { children: [e, jsx(Scripts, {})] })] });
+function Q({ children: e }) {
+  return jsxs("html", { lang: "en", children: [jsxs("head", { children: [jsx("link", { rel: "preconnect", href: "https://fonts.googleapis.com" }), jsx("link", { rel: "preconnect", href: "https://fonts.gstatic.com" }), jsx("link", { href: "https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap", rel: "stylesheet" }), jsx(HeadContent, {})] }), jsxs("body", { children: [e, jsx(Scripts, {})] })] });
 }
-async function Y(e, t, a) {
-  var n;
-  const r = t[0];
-  if (isPlainObject$1(r) && r.method) {
-    const o = r, l = o.data instanceof FormData ? "formData" : "payload", u = new Headers({ ...l === "payload" ? { "content-type": "application/json", accept: "application/json" } : {}, ...o.headers instanceof Headers ? Object.fromEntries(o.headers.entries()) : o.headers });
-    if (o.method === "GET") {
-      const i = encode$1({ payload: startSerializer.stringify({ data: o.data, context: o.context }) });
-      i && (e.includes("?") ? e += `&${i}` : e += `?${i}`);
+async function Y(e, t, r) {
+  var o;
+  const n = t[0];
+  if (isPlainObject$1(n) && n.method) {
+    const s = n, l = s.data instanceof FormData ? "formData" : "payload", u = new Headers({ ...l === "payload" ? { "content-type": "application/json", accept: "application/json" } : {}, ...s.headers instanceof Headers ? Object.fromEntries(s.headers.entries()) : s.headers });
+    if (s.method === "GET") {
+      const c = encode$1({ payload: startSerializer.stringify({ data: s.data, context: s.context }) });
+      c && (e.includes("?") ? e += `&${c}` : e += `?${c}`);
     }
-    e.includes("?") ? e += "&createServerFn" : e += "?createServerFn", o.response === "raw" && (e += "&raw");
-    const v = await a(e, { method: o.method, headers: u, signal: o.signal, ...Z(o) }), f = await S(v);
-    if ((n = f.headers.get("content-type")) != null && n.includes("application/json")) {
-      const i = startSerializer.decode(await f.json());
-      if (isRedirect(i) || isNotFound(i) || i instanceof Error) throw i;
-      return i;
+    e.includes("?") ? e += "&createServerFn" : e += "?createServerFn", s.response === "raw" && (e += "&raw");
+    const x = await r(e, { method: s.method, headers: u, signal: s.signal, ...Z(s) }), f = await b(x);
+    if ((o = f.headers.get("content-type")) != null && o.includes("application/json")) {
+      const c = startSerializer.decode(await f.json());
+      if (isRedirect(c) || isNotFound(c) || c instanceof Error) throw c;
+      return c;
     }
     return f;
   }
-  const s = await S(await a(e, { method: "POST", headers: { Accept: "application/json", "Content-Type": "application/json" }, body: JSON.stringify(t) })), c = s.headers.get("content-type");
-  return c && c.includes("application/json") ? startSerializer.decode(await s.json()) : s.text();
+  const a = await b(await r(e, { method: "POST", headers: { Accept: "application/json", "Content-Type": "application/json" }, body: JSON.stringify(t) })), d = a.headers.get("content-type");
+  return d && d.includes("application/json") ? startSerializer.decode(await a.json()) : a.text();
 }
 function Z(e) {
   var _a;
   return e.method === "POST" ? e.data instanceof FormData ? (e.data.set("__TSR_CONTEXT", startSerializer.stringify(e.context)), { body: e.data }) : { body: startSerializer.stringify({ data: (_a = e.data) != null ? _a : null, context: e.context }) } : {};
 }
-async function S(e) {
+async function b(e) {
   if (!e.ok) {
     const t = e.headers.get("content-type");
     throw t && t.includes("application/json") ? startSerializer.decode(await e.json()) : new Error(await e.text());
@@ -4556,43 +4556,58 @@ function q(e) {
   return e.replace(/^\/|\/$/g, "");
 }
 const ee = (e, t) => {
-  const a = `/${q(t)}/${e}`;
-  return Object.assign((...r) => Y(a, r, async (s, c) => {
-    c.headers = mergeHeaders$2(getHeaders(), c.headers);
-    const o = await $fetch.native(s, c), l = getEvent(), u = mergeHeaders$2(o.headers, l.___ssrRpcResponseHeaders);
-    return l.___ssrRpcResponseHeaders = u, o;
-  }), { url: a, functionId: e });
-}, te = () => import('../build/index-BwbzrdpL.mjs'), oe = ee("src_routes_index_tsx--getPokemonList_createServerFn_handler", "/_server"), ne = createServerFn({ method: "GET" }).handler(oe), k = createFileRoute("/")({ component: lazyRouteComponent(te, "component", () => k.ssr), loader: async () => await ne() }), re = createClient(createConfig({ baseUrl: "https://pokeapi.co" })), ae = (e) => {
+  const r = `/${q(t)}/${e}`;
+  return Object.assign((...n) => Y(r, n, async (a, d) => {
+    d.headers = mergeHeaders$2(getHeaders(), d.headers);
+    const s = await $fetch.native(a, d), l = getEvent(), u = mergeHeaders$2(s.headers, l.___ssrRpcResponseHeaders);
+    return l.___ssrRpcResponseHeaders = u, s;
+  }), { url: r, functionId: e });
+}, S = createClient(createConfig({ baseUrl: "https://pokeapi.co" })), te = (e) => {
   var _a;
-  return ((_a = e.client) != null ? _a : re).get({ security: [{ in: "cookie", name: "sessionid", type: "apiKey" }, { scheme: "basic", type: "http" }], url: "/api/v2/pokemon/{id}/", ...e });
-}, se = () => import('../build/index-BWZRppow.mjs'), P = createFileRoute("/pokemon/$pokemonId/")({ component: lazyRouteComponent(se, "component", () => P.ssr), loader: async ({ params: e }) => (await ae({ path: { id: e.pokemonId } })).data }), ie = k.update({ id: "/", path: "/", getParentRoute: () => h }), ce = P.update({ id: "/pokemon/$pokemonId/", path: "/pokemon/$pokemonId/", getParentRoute: () => h }), de = { IndexRoute: ie, PokemonPokemonIdIndexRoute: ce }, pe = h._addFileChildren(de)._addFileTypes();
-function le() {
-  return createRouter$2({ routeTree: pe, scrollRestoration: true });
+  return ((_a = e == null ? void 0 : e.client) != null ? _a : S).get({ security: [{ in: "cookie", name: "sessionid", type: "apiKey" }, { scheme: "basic", type: "http" }], url: "/api/v2/pokemon/", ...e });
+}, oe = (e) => {
+  var _a;
+  return ((_a = e.client) != null ? _a : S).get({ security: [{ in: "cookie", name: "sessionid", type: "apiKey" }, { scheme: "basic", type: "http" }], url: "/api/v2/pokemon/{id}/", ...e });
+}, ne = () => import('../build/index-DXNdrEJi.mjs');
+ee("src_routes_index_tsx--getPokemonList_createServerFn_handler", "/_server");
+const P = createFileRoute("/")({ component: lazyRouteComponent(ne, "component", () => P.ssr), loader: async () => {
+  var _a, _b, _c;
+  let t = 0;
+  const r = [];
+  let o = true;
+  do {
+    const n = await te({ query: { limit: 100, offset: t } });
+    r.push(...(_b = (_a = n == null ? void 0 : n.data) == null ? void 0 : _a.results) != null ? _b : []), t += 100, o = !!((_c = n == null ? void 0 : n.data) == null ? void 0 : _c.next);
+  } while (o);
+  return r;
+} }), re = () => import('../build/index-DoTIrDB0.mjs'), v = createFileRoute("/pokemon/$pokemonId/")({ component: lazyRouteComponent(re, "component", () => v.ssr), loader: async ({ params: e }) => (await oe({ path: { id: e.pokemonId } })).data }), se = P.update({ id: "/", path: "/", getParentRoute: () => y }), ae = v.update({ id: "/pokemon/$pokemonId/", path: "/pokemon/$pokemonId/", getParentRoute: () => y }), ie = { IndexRoute: se, PokemonPokemonIdIndexRoute: ae }, ce = y._addFileChildren(ie)._addFileTypes();
+function de() {
+  return createRouter$2({ routeTree: ce, scrollRestoration: true });
 }
-const me = () => ({ routes: { __root__: { filePath: "__root.tsx", children: ["/", "/pokemon/$pokemonId/"], preloads: ["/_build/assets/client-CGlB8Oyy.js", "/_build/assets/client-hqi2Bekw.js"] }, "/": { filePath: "index.tsx" }, "/pokemon/$pokemonId/": { filePath: "pokemon/$pokemonId/index.tsx" } } });
-function ue(e) {
+const pe = () => ({ routes: { __root__: { filePath: "__root.tsx", children: ["/", "/pokemon/$pokemonId/"], preloads: ["/_build/assets/client-DWvec8P2.js", "/_build/assets/client-DyBz_VP7.js"] }, "/": { filePath: "index.tsx" }, "/pokemon/$pokemonId/": { filePath: "pokemon/$pokemonId/index.tsx" } } });
+function le(e) {
   return globalThis.MANIFEST[e];
 }
-function fe() {
+function me() {
   var _a;
-  const e = me(), t = e.routes.__root__ = e.routes.__root__ || {};
+  const e = pe(), t = e.routes.__root__ = e.routes.__root__ || {};
   t.assets = t.assets || [];
-  let a = "";
-  const n = ue("client"), r = (_a = n.inputs[n.handler]) == null ? void 0 : _a.output.path;
-  return r || M(r, "Could not find client entry in vinxi manifest"), t.assets.push({ tag: "script", attrs: { type: "module", suppressHydrationWarning: true, async: true }, children: `${a}import("${r}")` }), e;
+  let r = "";
+  const o = le("client"), n = (_a = o.inputs[o.handler]) == null ? void 0 : _a.output.path;
+  return n || M(n, "Could not find client entry in vinxi manifest"), t.assets.push({ tag: "script", attrs: { type: "module", suppressHydrationWarning: true, async: true }, children: `${r}import("${n}")` }), e;
 }
-function he() {
-  const e = fe();
-  return { ...e, routes: Object.fromEntries(Object.entries(e.routes).map(([t, a]) => {
-    const { preloads: n, assets: r } = a;
-    return [t, { preloads: n, assets: r }];
+function ue() {
+  const e = me();
+  return { ...e, routes: Object.fromEntries(Object.entries(e.routes).map(([t, r]) => {
+    const { preloads: o, assets: n } = r;
+    return [t, { preloads: o, assets: n }];
   })) };
 }
-const Te = createStartHandler({ createRouter: le, getRouterManifest: he })(K);
+const Pe = createStartHandler({ createRouter: de, getRouterManifest: ue })(L);
 
 const handlers = [
   { route: '/_server', handler: z, lazy: false, middleware: true, method: undefined },
-  { route: '/', handler: Te, lazy: false, middleware: true, method: undefined }
+  { route: '/', handler: Pe, lazy: false, middleware: true, method: undefined }
 ];
 
 function createNitroApp() {
@@ -4665,7 +4680,7 @@ function createNitroApp() {
     preemptive: true
   });
   const nodeHandler = toNodeListener(h3App);
-  const localCall = (aRequest) => b(nodeHandler, aRequest);
+  const localCall = (aRequest) => b$1(nodeHandler, aRequest);
   const localFetch = (input, init) => {
     if (!input.toString().startsWith("/")) {
       return globalThis.fetch(input, init);
@@ -4751,5 +4766,5 @@ const listener = function(req, res) {
   return handler(req, res);
 };
 
-export { P, k, listener as l };
+export { P, ee as e, listener as l, v };
 //# sourceMappingURL=nitro.mjs.map
