@@ -44,11 +44,11 @@ function RouteComponent() {
 
   return (
     <div
-      className="flex flex-col min-h-screen"
+      className="flex flex-col min-h-screen py-4"
       style={{ backgroundColor: primaryTypeColor }}
     >
       {/* Hero Header */}
-      <div className="text-white p-4">
+      <div className="text-white px-4 pb-4">
         <div className="container mx-auto">
           <Header />
         </div>
