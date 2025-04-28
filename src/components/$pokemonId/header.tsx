@@ -4,7 +4,11 @@ import { Link } from "@tanstack/react-router";
 export function Header() {
   return (
     <div className="flex items-center">
-      <Link to="/" className="text-white flex items-center gap-x-2">
+      <Link
+        to="/"
+        viewTransition={{ types: ["fade"] }}
+        className="text-white flex items-center gap-x-2"
+      >
         <ArrowLeftIcon className="size-4" />
         Back to Pokédex
       </Link>

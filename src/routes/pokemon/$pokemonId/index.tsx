@@ -44,7 +44,7 @@ function RouteComponent() {
 
   return (
     <div
-      className="flex flex-col min-h-screen py-4"
+      className="flex flex-col min-h-screen py-4 [view-transition-name:main-content]"
       style={{ backgroundColor: primaryTypeColor }}
     >
       {/* Hero Header */}

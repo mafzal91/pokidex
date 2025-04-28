@@ -10,17 +10,9 @@ import { Pokeball } from "@/components/pokiball";
 import { createServerFn } from "@tanstack/react-start";
 import { pokemonList } from "@/client/index";
 
-const getPokemonList = createServerFn({
-  method: "GET",
-}).handler(
-  async (): Promise<PaginatedPokemonSummaryListReadable | undefined> => {
-    const data = await pokemonList();
-    return data.data;
-  }
-);
-
 export const Route = createFileRoute("/")({
   component: RouteComponent,
+  ssr: false,
   loader: async () => {
     const limit = 100;
     let offset = 0;
@@ -59,7 +51,7 @@ function RouteComponent() {
   );
 
   return (
-    <div className="min-h-screen bg-gray-100">
+    <div className="min-h-screen bg-gray-100 [view-transition-name:main-content]">
       {/* Hero Header */}
       <div className="bg-gradient-to-r from-red-400 to-red-600 text-white py-12 px-4">
         <div className="container mx-auto">
@@ -94,6 +86,7 @@ function RouteComponent() {
             return (
               <Link
                 key={pokemon.name}
+                viewTransition={{ types: ["fade"] }}
                 to="/pokemon/$pokemonId"
                 params={{ pokemonId: pokemon.name }}
                 className="group flex flex-col rounded-2xl overflow-hidden shadow-sm transition-all duration-300 transform hover:scale-105"
